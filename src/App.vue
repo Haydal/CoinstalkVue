@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <Navigation></Navigation>
-    <Header></Header>
-    <Home></Home>
+    <Navigation/>
+    <Header/>
+    <Home/>
   </div>
 </template>
 
-<script src="./main.js"></script>
+<script src="@/main.js"></script>
 
 <script>
 import Navigation from "@/components/Navigation.vue";
