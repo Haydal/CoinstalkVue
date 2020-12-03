@@ -1,20 +1,7 @@
-li {
-    list-style: none;
-  }
+ 
+ * {
+  color: white;
+  background-color: black;
+}
   
-  * {
-    color: white;
-    background-color: black;
-  }
   
-  img {
-      width:  300x;
-      height: 300px;
-      object-fit: contain;
-  }
-  
-  #logo{
-      width:  100x;
-      height: 100px;
-      object-fit: contain;
-  }

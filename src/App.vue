@@ -1,22 +1,21 @@
 <template>
   <div id="app">
-    <Navigation></Navigation>
-    <Header></Header>
-    <Home></Home>
+    <Navigation/>
+    <b-container>
+      <router-view/>
+    </b-container>
   </div>
 </template>
 
 <script src="./main.js"></script>
 
 <script>
-import Navigation from "@/components/Navigation.vue";
-import Home from "@/components/Home.vue";
+  import Navigation from "@/components/Navigation.vue";
 
-export default {
-  name: "App",
-  components: {
-    Navigation,
-    Home
-  },
-};
+  export default {
+    name: "App",
+    components: {
+      Navigation,
+    },
+  };
 </script>
