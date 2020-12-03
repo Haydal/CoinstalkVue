@@ -10,7 +10,7 @@
             <section v-else>
                 <div v-if="loading">Loading...</div>
 
-                <div v-for="currency in info" clas="currency" :key="currency.info">
+                <div v-for="currency in info" class="currency" :key="currency.info">
                         {{ currency.description }}:
                         <b-badge>
                             {{ currency.rate_float | currencydecimal }}
