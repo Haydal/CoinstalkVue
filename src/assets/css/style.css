@@ -3,5 +3,16 @@
   color: white;
   background-color: black;
 }
-  
-  
+
+a {
+  color: rgb(190, 153, 51);
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgb(218, 110, 9);
+}
+
+a:active {
+  color: red;
+}
