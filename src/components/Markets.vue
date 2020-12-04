@@ -1,6 +1,6 @@
 
 <template>
-    <div id="coin">
+    <div class="container justify-content-centerr" id="coin">
             <!--Message d'ereur si chargement impossible-->
              <section v-if="errored">
                 <p>We are sorry, we are unable to retrieve this information at this time. Please retry later</p>

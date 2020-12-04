@@ -5,7 +5,7 @@
         :options="{
           studies: ['MACD@tv-basicstudies', 'RSI@tv-basicstudies'],
           width: '-webkit-fill-available',
-          height: 666,
+          height: 753,
           symbol: 'COINBASE:BTCUSD',
           timezone: 'Etc/UTC',
           theme: 'dark',

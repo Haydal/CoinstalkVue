@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div class="container col" id="app">
     <Navigation/>
-    <b-container class="content col">
+    <b-container class="container col">
       <router-view/>
     </b-container>
   </div>
