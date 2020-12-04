@@ -13,3 +13,6 @@ a:hover {
   color: rgb(218, 110, 9);
 }
 
+col-lg-1 {
+  background-color: yellow;
+}
