@@ -1,9 +1,10 @@
 <template>
+
+<div class="content row border">
+  <div class="col-lg-8 border ">
 <VueTradingView 
     :options="{
-      
-      width: 1200,
-      height: 666,
+      autosize: true,
       symbol: 'COINBASE:BTCUSD',
       timezone: 'Etc/UTC',
       theme: 'dark',
@@ -16,7 +17,9 @@
       allow_symbol_change: true,
     }"
   /> 
-
+  </div>
+  <div class="col-lg-4 border ">Bitcoin Price: </div>
+</div>
 </template>
 
 <script>
@@ -32,4 +35,3 @@ export default {
   },
 };
 </script>
-

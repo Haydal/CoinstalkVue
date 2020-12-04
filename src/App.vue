@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div class="container col" id="app">
     <Navigation/>
-    <b-container>
+    <b-container class="col-lg-10">
       <router-view/>
     </b-container>
   </div>
@@ -18,4 +18,4 @@
       Navigation,
     },
   };
-</script> 
+</script>
