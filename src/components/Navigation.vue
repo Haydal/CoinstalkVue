@@ -2,13 +2,13 @@
   <b-navbar toggleable="lg" type="dark" variant="black">
     <!-- Onglets Home-->
     <b-link :to="{ name: 'home'}">
-      <img id="logo" src="@/assets/img/coinstalk_logo.png" alt="coinstalk">
+      <img id="logo" src="@/assets/img/coinstalk.png" alt="coinstalk">
     </b-link>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <!-- Onglets Charts-->
-        <b-nav-item class="" :to="{ name: 'charts' }">Charts</b-nav-item>
+        <b-nav-item :to="{ name: 'charts' }">Charts</b-nav-item>
         <!-- Onglets Markets-->
         <b-nav-item :to="{ name: 'markets' }">Markets</b-nav-item>
         <!-- Onglets News-->
@@ -39,6 +39,8 @@ export default {
   #logo {
     height: 4rem;
     width: auto;
+    background-color: goldenrod;
+    border-radius: 10%;
   }
   
 

@@ -28,7 +28,10 @@
                             <td><b-img :src="info.image" :alt="info.name"></b-img></td>
                             <td><h4>{{ info.name }}</h4><span> ({{ info.symbol }})</span></td>
                             <td><p>$ {{ info.current_price }}</p></td>
-                            <td>{{ info.price_change_percentage_24h | currencydecimal}} %</td>
+                            <!--A améliorer des que possible -->
+                            <td v-if=" info.price_change_percentage_24h < 0" style="color:red;" >{{ info.price_change_percentage_24h | currencydecimal}}  %</td>
+                            <td  v-else style="color:green;" >{{ info.price_change_percentage_24h | currencydecimal}} %</td>
+                            <!--sale-->
                             <td><p>$ {{ info.total_volume }}</p></td>
                         </tr>
                     </tbody>    
@@ -47,7 +50,8 @@ export default {
             return{
                 infos: null,
                 loading: true,
-                errored: false
+                errored: false,
+            
             }
         },
         filters: {
@@ -69,6 +73,7 @@ export default {
             //Arreter l'aniation a la fin du chargement
             .finally(() => this.loading = false)
         },
+        
           
 }
 </script>
