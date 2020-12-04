@@ -29,8 +29,8 @@
                             <td><h4>{{ info.name }}</h4><span> ({{ info.symbol }})</span></td>
                             <td><p>$ {{ info.current_price }}</p></td>
                             <!--A améliorer des que possible -->
-                            <td v-if=" info.price_change_percentage_24h < 0" style="color:red;" >{{ info.price_change_percentage_24h | currencydecimal}}  %</td>
-                            <td  v-else style="color:green;" >{{ info.price_change_percentage_24h | currencydecimal}} %</td>
+                            <td v-if="info.price_change_percentage_24h < 0" style="color:red;" >{{ info.price_change_percentage_24h | currencydecimal}}  %</td>
+                            <td v-else style="color:green;">{{ info.price_change_percentage_24h | currencydecimal}} %</td>
                             <!--sale-->
                             <td><p>$ {{ info.total_volume }}</p></td>
                         </tr>
@@ -57,7 +57,11 @@ export default {
         filters: {
             //Aroondir à 2 chiffres après la virgule
             currencydecimal (value) {
-            return value.toFixed(2)
+                if(value == null){
+                    return "nd"
+                }else{
+                    return value.toFixed(2)
+                }    
             }
         },
         mounted () {
