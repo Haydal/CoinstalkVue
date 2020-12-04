@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" >
+  <b-navbar toggleable="lg" type="dark" variant="black">
     <!-- Onglets Home-->
     <b-link :to="{ name: 'home'}">
       <img id="logo" src="@/assets/img/coinstalk_logo.png" alt="coinstalk">
@@ -8,11 +8,11 @@
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <!-- Onglets Charts-->
-        <b-link :to="{ name: 'charts' }">Charts</b-link>
+        <b-nav-item class="" :to="{ name: 'charts' }">Charts</b-nav-item>
         <!-- Onglets Markets-->
-        <b-link :to="{ name: 'markets' }">Markets</b-link>
+        <b-nav-item :to="{ name: 'markets' }">Markets</b-nav-item>
         <!-- Onglets News-->
-        <b-link :to="{ name: 'news' }">News</b-link>
+        <b-nav-item :to="{ name: 'news' }">News</b-nav-item>
 
       </b-collapse>
   </b-navbar>
@@ -40,4 +40,6 @@ export default {
     height: 4rem;
     width: auto;
   }
+  
+
 </style>
