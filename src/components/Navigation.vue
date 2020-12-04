@@ -2,8 +2,8 @@
 <div class="content">
   <b-navbar toggleable="lg" type="dark">
     <!-- Onglets Home-->
-    <b-link :to="{ name: 'home' }">
-      <img id="logo" src="@/assets/img/coinstalk_logo.png" alt="coinstalk" />
+    <b-link :to="{ name: 'home'}">
+      <img id="logo" src="@/assets/img/coinstalk.png" alt="coinstalk">
     </b-link>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -51,18 +51,16 @@ export default {
 
 <style>
 
-#logo {
-  width: 100x;
-  height: 100px;
-  object-fit: contain;
-}
+  li {
+    list-style: none;
+  }
+  
+  #logo {
+    height: 4rem;
+    width: auto;
+    background-color: goldenrod;
+    border-radius: 10%;
+  }
+  
 
-li {
-  list-style: none;
-}
-
-#logo {
-  height: 4rem;
-  width: auto;
-}
 </style>
