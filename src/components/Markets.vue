@@ -7,17 +7,6 @@
             </section>
 
             <section v-else>
-<<<<<<< HEAD
-                <div v-if="loading">Loading...</div>
-
-                <div v-for="currency in info" class="currency" :key="currency.info">
-                        {{ currency.description }}:
-                        <b-badge>
-                            {{ currency.rate_float | currencydecimal }}
-                            <b-badge v-html="currency.symbol"></b-badge>
-                        </b-badge>
-                    </div>
-=======
                 <!--spinner en cours de chargement-->
                 <div v-if="loading" class="text-center">
                     <b-spinner :variant="light" label="Loading..."></b-spinner>
@@ -44,7 +33,6 @@
                         </tr>
                     </tbody>    
                 </table>
->>>>>>> marco
             </section>
     </div>
 </template>
