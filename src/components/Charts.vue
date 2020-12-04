@@ -19,8 +19,14 @@
     }"
   /> 
   </div>
-  <div class="col-lg-4 border ">Bitcoin <br> 
-  Price: <br> Volume (24) </div>
+  <div class="col-lg-4 "><h1>Bitcoin</h1><br> 
+  <h6>Price:</h6> <br>
+   <h6>Volume (24):</h6> <br> 
+  <h6>Total Market Cap:</h6><br>
+   <h6>Total supply:</h6><br>
+   <h6>Circulating supply:</h6><br>
+   <h2>About #Bitcoin:</h2> </div>
+
 </div>
 </template>
 
