@@ -3,10 +3,9 @@
     <div class="col-lg-8">
       <VueTradingView
         :options="{
-            backgroundColor: 'white',
-            textColor: 'rgba(255, 255, 255, 0.9)',
+          studies: ['MACD@tv-basicstudies', 'RSI@tv-basicstudies'],
           width: '-webkit-fill-available',
-          height: 800,
+          height: 666,
           symbol: 'COINBASE:BTCUSD',
           timezone: 'Etc/UTC',
           theme: 'dark',
