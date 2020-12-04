@@ -3,7 +3,7 @@
     <div class="col-lg-8">
       <VueTradingView
         :options="{
-          studies: ['MACD@tv-basicstudies', 'RSI@tv-basicstudies'],
+          studies: ['OBV@tv-basicstudies'],
           width: '-webkit-fill-available',
           height: 753,
           symbol: 'COINBASE:BTCUSD',
