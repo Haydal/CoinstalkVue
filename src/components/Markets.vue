@@ -54,12 +54,11 @@
                             <td><h4>{{ info.name }}</h4><span>({{ info.symbol }})</span></td>
                             <td>{{ symbCurrency }} {{ info.current_price }}</td>
                             <!--A améliorer des que possible -->
-                            <td v-if="info.price_change_percentage_24h_in_currency < 0" style="color:red;">{{ info.price_change_percentage_24h_in_currency | currencydecimal }}  %</td>
-                            <td v-else style="color:green;">{{ info.price_change_percentage_24h_in_currency | currencydecimal}} %</td>
-                            <!--sale-->
-                            <!--A améliorer des que possible -->
-                            <td v-if="info.price_change_percentage_7d_in_currency < 0" style="color:red;">{{ info.price_change_percentage_7d_in_currency | currencydecimal }}  %</td>
-                            <td v-else style="color:green;">{{ info.price_change_percentage_7d_in_currency | currencydecimal }} %</td>
+                            <td :class="changeColor(info.price_change_percentage_24h_in_currency)">{{ info.price_change_percentage_24h_in_currency | currencydecimal }}  %</td>
+                            
+    
+                            <td :class="changeColor(info.price_change_percentage_7d_in_currency)">{{ info.price_change_percentage_7d_in_currency | currencydecimal }}  %</td>
+                           
                             <!--sale-->
                             <td>{{ symbCurrency }} {{ info.total_volume }}</td>
                         </tr>
@@ -92,10 +91,11 @@ export default {
             currencydecimal (value) {
                 if(value == null){
                     return "nd"
-                }else{
+                }else {
                     return value.toFixed(2)
                 }    
-            }
+            },
+           
         }),
         methods: {
             init(){
@@ -110,6 +110,15 @@ export default {
                 })
                     //Arreter l'animation à la fin du chargement
                 .finally(() => this.loading = false)
+            },
+             changeColor (value) {
+                if(value > 0){
+                    return 'text-success'
+                }else if (value < 0){
+                    return 'text-danger'
+                }else{
+                    return 'text-warning'
+                }
             }
         },
         mounted() {
