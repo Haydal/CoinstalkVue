@@ -18,6 +18,9 @@ import News from "@/components/News.vue";
 import Markets from "@/components/Markets.vue";
 import Charts from "@/components/Charts";
 
+//import SmartTable
+import SmartTable from 'vuejs-smart-table'
+
 //Déclaration des routes 
 const routes = [
   { path: '*', name: 'home', component: Home },//' * ' est pour que tout les autres routes menent a la page d'accueil 
@@ -37,6 +40,7 @@ Vue.use(Axios);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
+Vue.use(SmartTable);
 
 new Vue({
   router,
