@@ -10,11 +10,13 @@
   "dependencies": {
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
+    "bootstrap-icons": "^1.1.0",
     "bootstrap-vue": "^2.19.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.4.9",
-    "vue-trading-view": "^1.0.1"
+    "vue-trading-view": "^1.0.1",
+    "vuejs-smart-table": "0.0.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
