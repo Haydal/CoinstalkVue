@@ -35,6 +35,7 @@
 
                 <v-table 
                     :data="infos"
+                    :hideSortIcons="true"
                     class="table table-striped table-dark"
                 >
                     <thead slot="head">
@@ -158,5 +159,25 @@ td img{
 
 th:hover{
     cursor: pointer;
+}
+
+.vt-sort:before{
+    font-family: FontAwesome;
+    padding-right: 0.5em;
+    width: 1.28571429em;
+    display: inline-block;
+    text-align: center;
+}
+
+.vt-sortable:before{
+    content: "\f338";
+}
+
+.vt-asc:before{
+    content: "\f160";
+}
+
+.vt-desc:before{
+    content: "\f161";
 }
 </style>
