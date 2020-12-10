@@ -1,6 +1,6 @@
 
 <template>
-    <div class="container justify-content-centerr" id="coin">
+    <div class="container justify-content-center" id="coin">
             <!--Message d'ereur si chargement impossible-->
              <section v-if="errored">
                 <p>We are sorry, we are unable to retrieve this information at this time. Please retry later</p>
@@ -26,7 +26,7 @@
                         <tr>
                             <td>#{{ info.market_cap_rank }}</td>
                             <td><b-img :src="info.image" :alt="info.name"></b-img></td>
-                            <td><h4>{{ info.name }}</h4><span> ({{ info.symbol }})</span></td>
+                            <td><h4>{{ info.name }}</h4><span> ({{ info.id }})</span></td>
                             <td><p>$ {{ info.current_price }}</p></td>
                             <!--A améliorer des que possible -->
                             <td v-if="info.price_change_percentage_24h < 0" style="color:red;" >{{ info.price_change_percentage_24h | currencydecimal}}  %</td>
