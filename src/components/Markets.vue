@@ -53,13 +53,8 @@
                             <td><b-img :src="info.image" :alt="info.name"></b-img></td>
                             <td><h4>{{ info.name }}</h4><span>({{ info.symbol }})</span></td>
                             <td>{{ symbCurrency }} {{ info.current_price }}</td>
-                            <!--A améliorer des que possible -->
                             <td :class="changeColor(info.price_change_percentage_24h_in_currency)">{{ info.price_change_percentage_24h_in_currency | currencydecimal }}  %</td>
-                            
-    
                             <td :class="changeColor(info.price_change_percentage_7d_in_currency)">{{ info.price_change_percentage_7d_in_currency | currencydecimal }}  %</td>
-                           
-                            <!--sale-->
                             <td>{{ symbCurrency }} {{ info.total_volume }}</td>
                         </tr>
                     </tbody>    
