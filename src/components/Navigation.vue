@@ -14,6 +14,7 @@
         <!-- Onglets News-->
         <b-nav-item :to="{ name: 'news' }">News</b-nav-item>
 
+        <b-nav-item :to="{ name: 'user' }">User</b-nav-item>
       </b-collapse>
   </b-navbar>
 
