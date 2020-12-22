@@ -19,7 +19,7 @@ import Markets from "@/components/Markets.vue";
 import Charts from "@/components/Charts";
 //import SmartTable
 import SmartTable from 'vuejs-smart-table'
-//import Sparkline
+//import Vuetify
 import Sparkline from "vue-sparklines";
 
 //Déclaration des routes 

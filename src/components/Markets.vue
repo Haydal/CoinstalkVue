@@ -67,8 +67,6 @@
                                     :refLineStyles="spRefLineStyles"
                                 />
                                 </sparkline>
-                               
-
                             </td>
                         </tr>
                     </tbody>    
