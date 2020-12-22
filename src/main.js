@@ -19,6 +19,8 @@ import Markets from "@/components/Markets.vue";
 import Charts from "@/components/Charts";
 //import SmartTable
 import SmartTable from 'vuejs-smart-table'
+//import Sparkline
+import Sparkline from "vue-sparklines";
 
 //Déclaration des routes 
 const routes = [
@@ -41,8 +43,14 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 Vue.use(SmartTable);
+Vue.use(Sparkline);
+
 
 new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
+
+
+

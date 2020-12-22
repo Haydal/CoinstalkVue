@@ -4,7 +4,7 @@
              <section v-if="errored">
                 <p>We are sorry, we are unable to retrieve this information at this time. Please retry later</p>
             </section>
-
+                    
             <section v-else>
                 <!--spinner en cours de chargement-->
                 <div v-if="loading" class="text-center">
@@ -14,14 +14,14 @@
                 <b-button v-b-toggle.collapse-1 class="m-2" variant="dark"><b-icon icon="sliders"></b-icon> Filters</b-button>
                 <b-collapse id="collapse-1" class="mt-2 ">
                         <b-form-group label="Nbs per page" class="d-inline p-2">
-                            <b-form-radio v-model="per_page" name="some-radios" value="50">50</b-form-radio>
-                            <b-form-radio v-model="per_page" name="some-radios" value="100">100</b-form-radio>
-                            <b-form-radio v-model="per_page" name="some-radios" value="250">250</b-form-radio>
+                            <b-form-radio v-model="per_page" name="per-pages" value="50">50</b-form-radio>
+                            <b-form-radio v-model="per_page" name="per-pages" value="100">100</b-form-radio>
+                            <b-form-radio v-model="per_page" name="per-pages" value="250">250</b-form-radio>
                         </b-form-group>
                         <b-form-group label="Currency" class="d-inline p-2">
-                            <b-form-radio v-model="currency" name="some-radios" value="usd">$</b-form-radio>
-                            <b-form-radio v-model="currency" name="some-radios" value="eur">€</b-form-radio>
-                            <b-form-radio v-model="currency" name="some-radios" value="jpy">¥</b-form-radio>
+                            <b-form-radio v-model="currency" name="currency_radio" value="usd">$</b-form-radio>
+                            <b-form-radio v-model="currency" name="currency_radio" value="eur">€</b-form-radio>
+                            <b-form-radio v-model="currency" name="currency_radio" value="jpy">¥</b-form-radio>
                         </b-form-group>
                          <b-pagination
                         v-model="currentPage"
@@ -32,7 +32,7 @@
                 </b-collapse>
                 </div>
                 <!-- Implementation de la data de l'api "infos" dans le tableau pour interagir-->
-
+               
                 <v-table 
                     :data="infos"
                     :hideSortIcons="true"
@@ -47,6 +47,7 @@
                             <v-th scope="col" sortKey="price_change_percentage_24h_in_currency">Last(24h)</v-th>
                             <v-th scope="col" sortKey="price_change_percentage_7d_in_currency">Last(7d)</v-th>
                             <v-th scope="col" sortKey="total_volume">Volume</v-th>
+                            <th scope="col">Last 7d</th>
                     </thead>
                     <tbody slot="body" slot-scope="{displayData}">
                         <tr v-for="info in displayData" :key="info.guid">
@@ -54,9 +55,21 @@
                             <td><b-img :src="info.image" :alt="info.name"></b-img></td>
                             <td><h4>{{ info.name }}</h4><span>({{ info.symbol }})</span></td>
                             <td>{{ symbCurrency }} {{ info.current_price }}</td>
-                            <td :class="changeColor(info.price_change_percentage_24h_in_currency)">{{ info.price_change_percentage_24h_in_currency | currencydecimal }}  %</td>
-                            <td :class="changeColor(info.price_change_percentage_7d_in_currency)">{{ info.price_change_percentage_7d_in_currency | currencydecimal }}  %</td>
+                            <td :class="changeColorCurrency(info.price_change_percentage_24h_in_currency)">{{ info.price_change_percentage_24h_in_currency | currencydecimal }}  %</td>
+                            <td :class="changeColorCurrency(info.price_change_percentage_7d_in_currency)">{{ info.price_change_percentage_7d_in_currency | currencydecimal }}  %</td>
                             <td>{{ symbCurrency }} {{ info.total_volume }}</td>
+                            <td>
+                                <sparkline :indicatorStyles="spIndicatorStyles">
+                                    <sparklineLine
+                                    :data="info.sparkline_in_7d.price"
+                                    :limit="info.sparkline_in_7d.price.length"
+                                    :styles="changeColorSparkline(info.sparkline_in_7d.price[0], info.sparkline_in_7d.price[info.sparkline_in_7d.price.length -1])"
+                                    :refLineStyles="spRefLineStyles"
+                                />
+                                </sparkline>
+                               
+
+                            </td>
                         </tr>
                     </tbody>    
                 </v-table>
@@ -80,7 +93,19 @@ export default {
             //Filtres
             per_page: 50,
             currency: "usd",
-            symbCurrency: "$"
+            symbCurrency: "$",
+            //ColorSparline
+            spIndicatorStyles:false,
+            spRefLineStyles:false,
+            colorGreen:{
+                stroke: '#28a745'
+            },
+            colorRed:{
+                stroke: '#dc3545'
+            },
+            colorOrange:{
+                stroke: '#fd7e14'
+            }
         }),
         filters: ({
             //Arondir à 2 chiffres après la virgule
@@ -97,7 +122,7 @@ export default {
             init(){
                   //Récuperation de données de l'api
                 Axios
-                .get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=" + this.currency + "&order=market_cap_desc&per_page=" + this.per_page + "&page=" + this.currentPage + "&sparkline=false&price_change_percentage=24h%2C7d")
+                .get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=" + this.currency + "&order=market_cap_desc&per_page=" + this.per_page + "&page=" + this.currentPage + "&sparkline=true&price_change_percentage=24h%2C7d")
                 .then(response => (this.infos = response.data))
                     //Pour récuperer les erreurs dans la console
                 .catch(error => {
@@ -107,13 +132,22 @@ export default {
                     //Arreter l'animation à la fin du chargement
                 .finally(() => this.loading = false)
             },
-             changeColor (value) {
+            changeColorCurrency(value) {
                 if(value > 0){
                     return 'text-success'
                 }else if (value < 0){
                     return 'text-danger'
                 }else{
                     return 'text-warning'
+                }
+            },
+            changeColorSparkline(value1,value2) {
+                if(value1 > value2){
+                    return this.colorRed
+                }else if (value1 < value2){
+                    return this.colorGreen
+                }else{
+                    return this.colorOrange
                 }
             }
         },
