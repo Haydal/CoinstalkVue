@@ -23,7 +23,7 @@
              </svg> News</b-link></b-nav-item>
       <div class="container col text-center">
         <div class="col-lg-10"></div>
-         <b-button-toggle class="col-lg-1 border" v-b-modal.modal-1>Login</b-button-toggle>
+         <button class="col-lg-1 border" v-b-modal.modal-1>Login</button>
           <b-modal id="modal-1" title="Login">
             <h3>Login</h3>
            E-mail:

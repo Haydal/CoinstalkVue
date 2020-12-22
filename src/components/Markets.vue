@@ -75,7 +75,7 @@
               <h4>{{ info.name }}</h4>
               <span>({{ info.symbol }})</span>
             </td>
-            <td>{{ symbCurrency }} {{ info.current_price }}</td>
+            <td>{{ symbCurrency }} {{ info.current_price.toLocaleString() }}</td>
             <td
               :class="changeColor(info.price_change_percentage_24h_in_currency)"
             >
@@ -92,7 +92,7 @@
               }}
               %
             </td>
-            <td>{{ symbCurrency }} {{ info.total_volume }}</td>
+            <td>{{ symbCurrency }} {{ info.total_volume.toLocaleString() }}</td>
           </tr>
         </tbody>
       </v-table>
