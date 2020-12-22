@@ -17,16 +17,18 @@ import Home from "@/components/Home.vue";
 import News from "@/components/News.vue";
 import Markets from "@/components/Markets.vue";
 import Charts from "@/components/Charts";
-
 //import SmartTable
 import SmartTable from 'vuejs-smart-table'
+//import Vuetify
+import Sparkline from "vue-sparklines";
 
 //Déclaration des routes 
 const routes = [
   { path: '*', name: 'home', component: Home },//' * ' est pour que tout les autres routes menent a la page d'accueil 
   { path: '/news', name: 'news', component: News },
   { path: '/markets', name: 'markets', component: Markets },
-  { path: '/charts', name: 'charts', component: Charts }
+  { path: '/charts', name: 'charts', component: Charts },
+  
 ]
 
 const router = new VueRouter({
@@ -41,8 +43,14 @@ Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 Vue.use(SmartTable);
+Vue.use(Sparkline);
+
 
 new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
+
+
+

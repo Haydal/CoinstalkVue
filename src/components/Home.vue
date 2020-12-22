@@ -36,7 +36,6 @@ export default {
     height: 300px;
     object-fit: contain;
   }
-
   
 
 </style>
